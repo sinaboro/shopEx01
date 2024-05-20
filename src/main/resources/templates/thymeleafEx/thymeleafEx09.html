@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  let name = [[${name}]];  // "" 기입이 안되서 에러 발생
+  let age = [[${age}]];
+</script>
+
+
+<script th:inline="javascript">
+  let name2 = [[${name}]];    //th:inline기입하면 자동 설정
+  let age2 = [[${age}]];
+</script>
+</body>
+</html>

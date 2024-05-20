@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h1>리터럴 서식</h1>
+
+  <div>'spring' + ' boot!' = <span th:text="'string' + ' boot!'"></span></div>
+  <div>"spring boot!" = <span th:text="springboot"></span></div>
+  <div>'spring boot!' = <span th:text="'spring boot!'"></span></div>
+  <div>'spring ' + ${data} = <span th:text="'spring ' + ${data}"></span></div>
+  <div>리터럴 대체 |spring ${data}| = <span th:text="|spring ${data}|"></span></div>
+
+</body>
+</html>

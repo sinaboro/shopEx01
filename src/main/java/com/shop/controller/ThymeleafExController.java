@@ -96,4 +96,34 @@ public class ThymeleafExController {
         return "thymeleafEx/thymeleafEx07";
     }
 
+    @GetMapping(value = "/ex08")
+    public String thymeleafExample08(Model model){
+        model.addAttribute("data", "Thymeleaf");
+        return "thymeleafEx/thymeleafEx08";
+    }
+
+    @GetMapping(value = "/ex09")
+    public String thymeleafExample09(Model model){
+        model.addAttribute("name", "JavaInline");
+        model.addAttribute("age", 20);
+        return "thymeleafEx/thymeleafEx09";
+    }
+
+    @GetMapping(value = "/ex10")
+    public String thymeleafExample10(Model model){
+        model.addAttribute("item", new ItemDto());
+        return "thymeleafEx/thymeleafEx10";
+    }
+
+    @GetMapping(value = "/ex11")
+    public String thymeleafExample11(Model model){
+        ItemDto itemDto = new ItemDto();
+        itemDto.setItemNm("java");
+        itemDto.setPrice(1000);
+        itemDto.setItemDetail("study!!!");
+        model.addAttribute("item", itemDto);
+        return "thymeleafEx/thymeleafEx10";
+    }
+
+
 }
