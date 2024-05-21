@@ -30,7 +30,7 @@
 </dependency>
 ```
 4. 주요 버전별 구현 방법<br>
-  스프링 부트 2.X.X ~ 2.6.X (스프링 5.X.X ~ 5.6.X)
+스프링 부트 2.X.X ~ 2.6.X (스프링 5.X.X ~ 5.6.X)
 ```java
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
