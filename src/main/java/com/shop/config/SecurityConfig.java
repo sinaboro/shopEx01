@@ -18,6 +18,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
 
         log.info("--------------------securityFilterChain-----------------------------");
+        http.csrf().disable();
+
         return http.build();
     }
 
