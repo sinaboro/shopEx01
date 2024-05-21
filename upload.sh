@@ -1,3 +1,3 @@
 git add .
-git commit -m "test3"
+git commit -m "5장완료"
 git push origin main
