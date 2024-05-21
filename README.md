@@ -43,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 }
 ```
-  &nbsp;&nbsp;● 스프링 부트 2.7.X ~ 3.0.X (스프링 5.7.X M2 ~ 6.0.X)
+  &nbsp;&nbsp;&nbsp;&nbsp;● 스프링 부트 2.7.X ~ 3.0.X (스프링 5.7.X M2 ~ 6.0.X)
 ```java
 public class SpringSecurityConfig {
 
@@ -57,7 +57,7 @@ public class SpringSecurityConfig {
     }
 }
 ```
-  ● 스프링 부트 3.1.X ~ (스프링 6.1.X ~ )
+   &nbsp;&nbsp;&nbsp;&nbsp;● 스프링 부트 3.1.X ~ (스프링 6.1.X ~ )
 ```java
 public class SpringSecurityConfig {
 
