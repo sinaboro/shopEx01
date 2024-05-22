@@ -1,3 +1,3 @@
 git add .
-git commit -m "7장1!"
+git commit -m "7장2!"
 git push origin main
