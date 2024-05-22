@@ -65,6 +65,24 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
         return null;
     }
 
+    /*
+       1. itemSearchDto : 검색조건
+       2. pageable : 페이지정보(페이지 번호, 페이지크기,정렬정보)
+       3. regDtsAfter(itemSearchDto.getSearchDateType()) : 등록 날짜 필터링 조건
+       4. searchSellStatusEq(itemSearchDto.getSearchSellStatus()) : 판매 상태 필터링 조건
+       5. searchByLike(itemSearchDto.getSearchBy(), itemSearchDto.getSearchQuery())
+            : 검색어에 따른 필터링 조건
+       6. orderBy(QItem.item.id.desc()): 아이템 ID를 기준으로 내림차순 정렬
+       7. offset(pageable.getOffset()): 조회할 데이터의 시작 위치를 설정
+       8. limit(pageable.getPageSize()): 한 번에 조회할 데이터의 최대 개수를 설정
+       9. fetch(): 최종적으로 쿼리를 실행하여 결과 리스트
+       10. queryFactory.select(Wildcard.count).from(QItem.item): 전체 아이템 수를 세기 위해 count
+       11. fetchOne(): 단일 결과를 반환, 여기서는 총 아이템 수
+       12. new PageImpl<>(content, pageable, total): PageImpl 객체를 생성
+          -> content: 조회된 아이템 리스트
+          -> pageable: 페이징 정보
+          -> total: 전체 아이템 수
+     */
     @Override
     public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
 
@@ -93,6 +111,20 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
         return StringUtils.isEmpty(searchQuery) ? null : QItem.item.itemNm.like("%" + searchQuery + "%");
     }
 
+    /*
+        1. queryFactory.select(...): QueryDSL을 사용하여 QMainItemDto 객체를 생성
+        2. join(itemImg.item, item): itemImg와 item을 조인
+        3. where(itemImg.repimgYn.eq("Y")): 대표 이미지 조건을 추가
+        4. where(itemNmLike(itemSearchDto.getSearchQuery())): 아이템 이름 검색 조건을 추가
+        5. orderBy(item.id.desc()): 아이템 ID를 기준으로 내림차순 정렬
+        6. offset(pageable.getOffset()): 조회할 데이터의 시작 위치를 설정
+        7. limit(pageable.getPageSize()): 한 번에 조회할 데이터의 최대 개수를 설정
+        8. fetch(): 최종적으로 쿼리를 실행하여 결과 리스트
+        9. List<MainItemDto> content
+            -> new QMainItemDto()생성된 객체를 MainItemDto로 변환해서
+            -> content가 리스트로 모든 정보를 가지고있음.
+
+     */
     @Override
     public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
         QItem item = QItem.item;
