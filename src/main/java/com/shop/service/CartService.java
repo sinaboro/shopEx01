@@ -2,6 +2,8 @@ package com.shop.service;
 
 import com.shop.dto.CartDetailDto;
 import com.shop.dto.CartItemDto;
+import com.shop.dto.CartOrderDto;
+import com.shop.dto.OrderDto;
 import com.shop.entity.Cart;
 import com.shop.entity.CartItem;
 import com.shop.entity.Item;
@@ -32,6 +34,7 @@ public class CartService {
     private final MemberRepository memberRepository;
     private final CartRopository cartRopository;
     private final CartItemRepository cartItemRepository;
+    private final OrderService orderService;
 
     public Long addCart(CartItemDto cartItemDto, String email){
         Item item = itemRepository.findById(cartItemDto.getItemId())
@@ -105,4 +108,35 @@ public class CartService {
         cartItemRepository.delete(cartItem);
     }
 
+    /*
+        1. 사용자가 장바구니에 담은 상품 리스트를 받아 각 상품의 정보를 OrderDto 객체로 변환
+        2. 변환된 주문 항목 리스트를 orderService를 통해 주문을 생성
+        3. 생성된 주문의 ID를 반환받은 후, 장바구니에서 해당 항목들을 삭제(주문했으면 더 이상 장바구니 담겨있을 필요성 없기때문)
+        4. 생성된 주문의 ID를 반환
+     */
+    public Long orderCartItem(List<CartOrderDto> cartOrderDtoList, String email){
+        List<OrderDto> orderDtoList = new ArrayList<>();
+
+        //장바구니 있는 상품을 -> 주문(order)로 옮기는 과정
+        for (CartOrderDto cartOrderDto : cartOrderDtoList) {
+            CartItem cartItem = cartItemRepository
+                    .findById(cartOrderDto.getCartItemId())
+                    .orElseThrow(EntityNotFoundException::new);
+
+            OrderDto orderDto = new OrderDto();
+            orderDto.setItemId(cartItem.getItem().getId());
+            orderDto.setCount(cartItem.getCount());
+            orderDtoList.add(orderDto);
+        }
+
+        Long orderId = orderService.orders(orderDtoList, email);
+        for (CartOrderDto cartOrderDto : cartOrderDtoList) {
+            CartItem cartItem = cartItemRepository
+                    .findById(cartOrderDto.getCartItemId())
+                    .orElseThrow(EntityNotFoundException::new);
+            cartItemRepository.delete(cartItem);
+        }
+
+        return orderId;
+    }
 }

@@ -109,5 +109,30 @@ public class OrderService {
         order.cancelOrder();
     }
 
+    /*
+       1. 이메일을 통해 Member 객체를 조회
+       2. 각 OrderDto 객체를 순회하면서, Item 객체를 조회하고 OrderItem 객체를 생성하여 리스트에 추가
+       3. OrderItem 리스트와 Member 객체를 사용하여 Order 객체를 생성
+       4. 생성된 Order 객체를 DB 저장하고, 생성된 주문의 ID를 반환
+     */
+    public Long orders(List<OrderDto> orderDtoList, String email){
+
+        Member member = memberRepository.findByEmail(email);
+        List<OrderItem> orderItemList = new ArrayList<>();
+
+        for (OrderDto orderDto : orderDtoList) {
+            Item item = itemRepository.findById(orderDto.getItemId())
+                    .orElseThrow(EntityNotFoundException::new);
+
+            OrderItem orderItem = OrderItem.createOrderItem(item, orderDto.getCount());
+            orderItemList.add(orderItem);
+        }
+
+        Order order = Order.createOrder(member, orderItemList);
+        orderRepository.save(order);
+
+        return order.getId();
+    }
+
 
 }
