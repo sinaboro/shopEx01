@@ -325,7 +325,7 @@ public class SecurityConfig {
 
 8. Swagger Api
 
-<img src="../../images/swagger.PNG">
+<img src="swagger.PNG">
 
 ```xml
 <!-- https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter -->
