@@ -325,7 +325,7 @@ public class SecurityConfig {
 
 8. Swagger Api
 
-<h3>swagger 설정 이미지</h3><br>
+<h6>swagger 설정 이미지</h6><br>
 <img src="swagger.PNG">
 
 ```xml
