@@ -338,11 +338,14 @@ public class SecurityConfig {
 <br>
 ```
 <h6>application.properties</h6><br>
+
 ```java
 spring.mvc.pathmatch.matching-strategy=ant_path_matcher
 ```
 <br>
+
 <h6>com.shop.config -> SwaggerConfig 설정</h6><br>
+
 ```java
 @Configuration
 public class SwaggerConfig {
