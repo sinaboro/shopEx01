@@ -338,6 +338,7 @@ public class SecurityConfig {
 <br>
 ```
 <h6>application.properties</h6>
+
 ```java
 spring.mvc.pathmatch.matching-strategy=ant_path_matcher
 ```
