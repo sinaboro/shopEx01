@@ -231,12 +231,6 @@ public class SecurityConfig {
             <scope>test</scope>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
-<!--            <version>2.7.1</version>-->
-<!--            <scope>compile</scope>-->
-<!--        </dependency>-->
 
         <dependency>
             <groupId>com.querydsl</groupId>
@@ -327,4 +321,17 @@ public class SecurityConfig {
 
 </project>
 
+```
+
+8. Swagger Api
+
+(./images/swagger.png)
+
+```xml
+<!-- https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter -->
+<dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-boot-starter</artifactId>
+    <version>3.0.0</version>
+</dependency>
 ```

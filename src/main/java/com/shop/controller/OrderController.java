@@ -43,7 +43,7 @@ public class OrderController {
         }
 
         String email = principal.getName();
-
+        log.info("--------------eamil : " + email);
         Long orderId;
 
         try{
