@@ -368,3 +368,8 @@ public class SwaggerConfig {
 }
 
 ```
+
+<br>
+<h6>
+    주소창 http://localhost:8080/swagger-ui/index.html 접속해서 확인
+</h6>
