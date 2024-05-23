@@ -329,6 +329,10 @@ public class SecurityConfig {
 <img src="swagger.PNG">
 
 ```xml
+<br>
+
+<h6>pom.xml 추가</h6>
+
 <!-- https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter -->
 <dependency>
     <groupId>io.springfox</groupId>
