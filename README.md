@@ -337,13 +337,13 @@ public class SecurityConfig {
 </dependency>
 <br>
 ```
-<h6>application.properties</h6><br>
+<h6>application.properties</h6>
 ```java
 spring.mvc.pathmatch.matching-strategy=ant_path_matcher
 ```
 <br>
 
-<h6>com.shop.config -> SwaggerConfig 설정</h6><br>
+<h6>com.shop.config -> SwaggerConfig 설정</h6>
 ```java
 @Configuration
 public class SwaggerConfig {
