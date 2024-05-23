@@ -322,7 +322,7 @@ public class SecurityConfig {
 </project>
 
 ```
-
+<br>
 8. Swagger Api
 
 <h6>swagger 설정 이미지</h6><br>
@@ -335,4 +335,30 @@ public class SecurityConfig {
     <artifactId>springfox-boot-starter</artifactId>
     <version>3.0.0</version>
 </dependency>
+<br>
+```
+<h6>application.properties</h6><br>
+```java
+spring.mvc.pathmatch.matching-strategy=ant_path_matcher
+```
+<br>
+<h6>com.shop.config -> SwaggerConfig 설정</h6><br>
+```java
+@Configuration
+public class SwaggerConfig {
+    private final String TITLE = "title";
+    private final String DESCRIPTION = "description";
+    private final String VERSION = "V1.0.0";
+
+    @Bean
+    public OpenAPI api() {
+        return new OpenAPI()
+                .info(new Info()
+                        .title(TITLE)
+                        .description(DESCRIPTION)
+                        .version(VERSION)
+                );
+    }
+}
+
 ```

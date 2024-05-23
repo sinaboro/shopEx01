@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class Swaggerconfig {
+public class SwaggerConfig {
     private final String TITLE = "title";
     private final String DESCRIPTION = "description";
     private final String VERSION = "V1.0.0";
